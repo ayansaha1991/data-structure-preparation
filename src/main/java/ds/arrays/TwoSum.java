@@ -6,7 +6,7 @@ import java.util.Map;
 public class TwoSum {
 
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 4};
+        int[] a = {1, 2, 3, 8, 5, 4};
         int target = 9;
 
         int[] found2Sum = find2SumPractice(a, target);

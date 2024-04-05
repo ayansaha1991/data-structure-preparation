@@ -11,7 +11,7 @@ public class Heap {
         this.elements = new ArrayList<>();
     }
 
-    public void insert(Integer data ) {
+    public void insert(Integer data) {
         this.elements.add(data);
         if (this.elements.size() > 1) {
             upHeap(this.elements.size()-1);

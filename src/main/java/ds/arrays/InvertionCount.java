@@ -5,7 +5,7 @@ import java.util.Random;
 public class InvertionCount {
 
 	public static void main(String[] args) {
-		long[] nums = {1, 2, 3} ;
+		long[] nums = {5,3,2,1,4} ;
 		//print(nums);
 		long invCount = sort(nums);
 		System.out.println(invCount);
@@ -30,10 +30,10 @@ public class InvertionCount {
 			for (int i = mid; i < len; i++) {
 				r[i-mid] = arr[i];
 			}
-			
+
 			invCount =  invCount + sort(r);
 			invCount = invCount + sort(l);
-			
+
 			invCount = invCount + merge(l, r, arr);
 		}
 		
@@ -58,6 +58,7 @@ public class InvertionCount {
 				nums[k] = l[i];
 				k++; i++;
 			} else {
+
 				nums[k] = r[j];
 				k++; j++;
 				invCount = invCount + (nL-i);
