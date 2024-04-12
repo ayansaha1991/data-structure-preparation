@@ -2,6 +2,12 @@ package ds.arrays;
 
 import ds.utils.ArrayUtils;
 
+/**
+ * Algorithm works with a modified binary search method.
+ * Observation - At any point one half left or right of middle element is sorted.
+ * We find out which half is sorted. To check if left half is sorted check if start item is less than middle item.
+ * Else It is sorted in other half .
+ */
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
         int[] arr = ArrayUtils.generateSequencialArray(15);
@@ -23,7 +29,7 @@ public class SearchInRotatedSortedArray {
                 return mid;
             }
 
-            // check which half is sorted
+            // check which half is sorted if start item is less than less that the middle item
             if (arr[start] <= arr[mid]) {
                 // left half is sorted
                 if (searchElem >= arr[start] && searchElem <= arr[mid]) {
@@ -31,8 +37,9 @@ public class SearchInRotatedSortedArray {
                 } else {
                     start = mid + 1;
                 }
+
+            // right half is sorted
             } else if (arr[mid] < arr[end]){
-                // right half is sorted
                 if (searchElem >= arr[mid] && searchElem <= arr[end]) {
                     start = mid + 1;
                 } else {

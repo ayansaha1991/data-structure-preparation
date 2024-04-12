@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PrintSubsequences {
-    public static void main(String[] args) {
+    public static void   main(String[] args) {
         int[] a = {3, 1, 2};
         LinkedList emptyArray = new LinkedList();
         f(a, 0, a.length, emptyArray);

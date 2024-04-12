@@ -6,7 +6,7 @@ public class ThreeSum {
 
     public static void main(String[] args) {
 
-        // sort the numbers array first as this algorith works on sorted number only
+        // sort the numbers array first as this algorithm works on sorted number only
         int a[] = {-1, -1, 0, 1, 2, 3, 4, 5};
         int sum = 6;
 

@@ -2,20 +2,21 @@ package ds.heaps;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
-public class Heap {
+public class MinHeap {
 
     List<Integer> elements;
 
-    public Heap() {
+    public MinHeap() {
         this.elements = new ArrayList<>();
     }
 
-    public void insert(Integer data) {
+    public void insert(Integer data ) {
         this.elements.add(data);
-        if (this.elements.size() > 1) {
+//        if (this.elements.size() > 1) {
             upHeap(this.elements.size()-1);
-        }
+//        }
     }
 
     public Integer get() {
@@ -43,21 +44,25 @@ public class Heap {
     }
 
     private void downHeap(int index) {
+        int min = index;
         int leftChildIndex = left(index);
         int rightChildIndex = right(index);
-        Integer currentParent = this.elements.get(index);
-        int min = index;
+        int parentElement = this.elements.get(min);
 
-        if (leftChildIndex < size() && this.elements.get(leftChildIndex) < currentParent) {
-            min = leftChildIndex;
-        }
-        if (rightChildIndex < size() && this.elements.get(rightChildIndex) < currentParent) {
+        if (index == size()-1) return;
+
+        if (rightChildIndex < size() && this.elements.get(rightChildIndex) < parentElement) {
             min = rightChildIndex;
         }
 
+        if (leftChildIndex < size() && this.elements.get(leftChildIndex) < this.elements.get(min)  ) {
+            min = leftChildIndex;
+        }
+
+
         if (min != index) {
             swap(min, index);
-            downHeap(index);
+            downHeap(min);
         }
     }
 
@@ -69,7 +74,7 @@ public class Heap {
     }
 
 
-    int size(){
+    public int size(){
         return this.elements.size();
     }
 
@@ -85,10 +90,10 @@ public class Heap {
         }
     }
 
-    private void swap(int i, int j){
-        Integer temp = this.elements.get(i);
-        this.elements.set(i, this.elements.get(j));
-        this.elements.set(j, temp);
+    private void swap(int first, int second){
+        Integer temp = this.elements.get(first);
+        this.elements.set(first, this.elements.get(second));
+        this.elements.set(second, temp);
 
     }
 
