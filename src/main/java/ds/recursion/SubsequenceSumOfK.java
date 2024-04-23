@@ -25,9 +25,9 @@ public class SubsequenceSumOfK {
         e.addLast(a[i]);
         sum = sum + a[i];
         printAllSubsequenceSumK(a, i+1, k, sum   , e);
+        e.removeLast();
 
         // not taking the ith element
-        e.removeLast();
         sum = sum - a[i];
         printAllSubsequenceSumK(a, i + 1, k, sum, e);
 

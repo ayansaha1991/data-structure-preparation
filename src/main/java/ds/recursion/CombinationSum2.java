@@ -9,15 +9,14 @@ import java.util.*;
  */
 public class CombinationSum2 {
     public static void main(String[] args) {
-        int[] a = {1, 1, 1, 2, 2,};
+        int[] a = {1, 1, 2};
         List<List<Integer>> ans = new ArrayList<>();
         LinkedList<Integer> ds = new LinkedList<>();
-        List<Integer> integers = List.of(1, 2, 4);
-        Integer[] arr = new Integer[integers.size()];
-        integers.toArray(arr);
-        int target= 4;
+
+        int target= 2;
         Arrays.sort(a);
         findCombination(a, 0, target, ds, ans);
+//        findCombination2(a, 0, target, ds, ans);
         System.out.println(ans);
     }
 
@@ -34,6 +33,25 @@ public class CombinationSum2 {
 
             ds.add(a[j]);
             findCombination(a, j+1, target-a[j], ds, ans);
+            ds.removeLast();
+        }
+    }
+
+    private static void findCombination2(int[] a, int ind, int target, LinkedList<Integer> ds, List<List<Integer>> ans) {
+
+        if (target == 0 || ind == a.length) {
+            if (target == 0) {
+                ans.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+
+        for (int i = ind; i < a.length; i++) {
+            if (i > ind && a[i] == a[i - 1]) continue;
+            if (a[i] > target) break;
+
+            ds.add(a[i]);
+            findCombination2(a, ind+1, target-a[i], ds, ans);
             ds.removeLast();
         }
     }

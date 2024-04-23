@@ -2,7 +2,7 @@ package ds.heaps;
 
 public class ClientMain {
     public static void main(String[] args) {
-        Heap heap = new Heap();
+        MinHeap heap = new MinHeap();
         heap.insert(10);
         heap.insert(5);
         heap.insert(11);

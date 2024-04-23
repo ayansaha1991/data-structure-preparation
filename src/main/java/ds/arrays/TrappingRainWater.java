@@ -26,11 +26,10 @@ public class TrappingRainWater {
 
                 if (height[low] > leftMax) {
                     leftMax = height[low];
-                    low++;
                 } else {
                     result += leftMax - height[low];
-                    low++;
                 }
+                low++;
 
             } else {
                 if (height[high] > rightMax) {

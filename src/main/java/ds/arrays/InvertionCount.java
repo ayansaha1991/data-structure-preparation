@@ -5,7 +5,7 @@ import java.util.Random;
 public class InvertionCount {
 
 	public static void main(String[] args) {
-		long[] nums = {5,3,2,1,4} ;
+		long[] nums = {5,3,2} ;
 		//print(nums);
 		long invCount = sort(nums);
 		System.out.println(invCount);

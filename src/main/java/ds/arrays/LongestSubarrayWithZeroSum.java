@@ -7,9 +7,9 @@ public class LongestSubarrayWithZeroSum {
 
 	public static void main(String[] args) {
 		
-		int[] nums = {1, 0, -5, 5} ;
+		int[] nums = {0, 1, 1, 1} ;
 		
-		System.out.println(findLongestSubarray(nums, 1));
+		System.out.println(findLongestSubarray(nums, 0));
 	}
 
 	private static int findLongestSubarray(int[] arr, int n) {
@@ -30,8 +30,8 @@ public class LongestSubarrayWithZeroSum {
 				map.put(sum, i);
 			} else {
 				
-				int foundSameSumeAt = map.get(sum);
-				int arrayLen = (i - foundSameSumeAt );
+				int foundSameSumAt = map.get(sum);
+				int arrayLen = (i - foundSameSumAt );
 				
 				if (arrayLen > maxLenWithZeroSum) {
 					maxLenWithZeroSum = arrayLen;

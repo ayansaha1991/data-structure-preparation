@@ -1,7 +1,6 @@
-package ds.arrays;
+package ds.recursion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class PrintAllPermutation {
         List<List<Integer>> result = new ArrayList<>();
         LinkedList<Integer> ds = new LinkedList<>();
         boolean[] freq = new boolean[nums.length];
-//        permuteRecursively(nums, ds, freq, result );
+//        permuteRecursively(nums, ds, freq, result);
         permuteRecursively2(nums, 0, result);
         return  result;
     }
@@ -47,6 +46,7 @@ public class PrintAllPermutation {
             result.add(new ArrayList<>(ds));
             return;
         }
+
         for (int i = 0; i < nums.length; i++) {
             // if the item is not taken
             if (!freq[i]) {

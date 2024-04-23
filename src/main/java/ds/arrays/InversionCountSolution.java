@@ -5,67 +5,71 @@ import ds.utils.ArrayUtils;
 public class InversionCountSolution {
 	public static void main(String[] args) {
 		int[] generateRandomArray = ArrayUtils.generateRandomArray(100);
-		int[] test = {4, 3,2, 1};
-		int numberOfInversions = numberOfInversions(test, test.length);
+		int[] a = {5,3,2,1,4};
+		System.out.println(numberOfInversions(a, a.length));;
+//		int numberOfInversions = numberOfInversions(a, a.length);
 		//ArrayUtils.print(generateRandomArray);
-		System.out.println(numberOfInversions);
+//		System.out.println(numberOfInversions);
 	}
 	
 	public static int numberOfInversions(int []a, int n) {
-		
-		if (n < 2) return 0;
-		
-		int cnt = 0;
-		
+		int invCount = 0;
+
+		if (a.length == 1) {
+			return 0;
+		}
+
 		int mid = n/2;
-		int[] l = new int[mid];
-		int[] r = new int[n-mid];
- 		
+		int[] left = new int[mid];
+		int[] right = new int[n - mid];
+
 		for (int i = 0; i < mid; i++) {
-			l[i] = a[i];
+			left[i] = a[i];
 		}
 
 		for (int i = mid; i < n; i++) {
-			r[i-mid] = a[i];
+			right[i-mid] = a[i];
 		}
-		
-		cnt = cnt + numberOfInversions(l, l.length);
-		cnt = cnt + numberOfInversions(r, r.length);
-		
-		int inversionCount = cnt +  mergeNumberOfInversion(l, r, a);
-		
-        return inversionCount;
+
+		invCount = invCount + numberOfInversions(left, left.length);
+		invCount = invCount + numberOfInversions(right, right.length);
+
+		invCount = invCount + merge(left, right, a);
+
+		return invCount;
     }
 
-	private static int mergeNumberOfInversion(int[] l, int[] r, int[] a) {
+	private static int merge(int[] left, int[] right, int[] a) {
 
-		int i=0, j=0, k=0;
-		int count = 0;
-		
-		while(i<l.length && j<r.length ) {
-			
-			if (l[i] <= r[j]) {
-				a[k] = l[i];
+		int i = 0, j= 0, k=0;
+		int invCount = 0;
+
+		while (i < left.length && j < right.length) {
+
+			if (left[i] <= right[j]){
+				a[k] = left[i];
 				k++; i++;
-			} else {
-				// inverse pair
-				a[k] = r[j];
+			} else if (left[i] > right[j]) {
+				a[k] = right[j];
 				k++; j++;
-				count = count  + (l.length-i);
+				invCount = invCount + (left.length-i);
 			}
-			
-		}
-		
-		for (int k2 = i; k2 < l.length; k2++) {
-			a[k] = l[k2]; k++;
+
+
 		}
 
-		for (int k2 = j; k2 < r.length; k2++) {
-			a[k] = r[k2]; k++;
+		for (int l = i; l < left.length; l++) {
+			a[k] = left[l];
+			k++;
 		}
-		
-		return count;
+		for (int l = j; l < right.length; l++) {
+			a[k] = right[l];
+			k++;
+		}
+
+		return invCount;
+
 	}
-	
-	
+
+
 }
