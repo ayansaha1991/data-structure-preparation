@@ -30,9 +30,9 @@ public class SetMatrixToZero {
 				if (matrix[i][j] == 0) {
 					matrix[i][0] = 0;
 					if (j==0 ) {
-						col0 = 0;
-					} else {
-						matrix[0][j] = 0;
+							col0 = 0;
+						} else {
+							matrix[0][j] = 0;
 					}
 
 				}

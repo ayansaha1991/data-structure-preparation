@@ -29,9 +29,10 @@ public class LongestSubarrayWithZeroSum {
 			if (!map.containsKey(sum)) {
 				map.put(sum, i);
 			} else {
-				
+				// if two index contains same prefix sum
+				// sum of elements between those index is Zero
 				int foundSameSumAt = map.get(sum);
-				int arrayLen = (i - foundSameSumAt );
+				int arrayLen = (i - foundSameSumAt);
 				
 				if (arrayLen > maxLenWithZeroSum) {
 					maxLenWithZeroSum = arrayLen;

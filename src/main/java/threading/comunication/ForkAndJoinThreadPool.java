@@ -9,7 +9,7 @@ import java.util.concurrent.RecursiveAction;
 public class ForkAndJoinThreadPool {
     public static void main(String[] args) {
 
-
+        ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 
 
     }

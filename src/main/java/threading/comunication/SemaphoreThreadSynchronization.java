@@ -4,6 +4,11 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Semaphone works like passes. You can go call the program only
+ * if you have the pass. It is useful for safe-gourd a External resource
+ * against overloading.
+ */
 public class SemaphoreThreadSynchronization {
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore(2, true);

@@ -18,8 +18,7 @@ public class BalanceBrackets {
 		}
 		
 		Stack<Character> stack = new Stack<>();
-		
-		
+
 		List<Character> open = Arrays.asList('{', '[', '(');
 		
 		for (int i = 0; i < s.length(); i++) {

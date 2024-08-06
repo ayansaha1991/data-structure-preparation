@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class CountSubArraySumEqualsK {
     public static void main(String[] args) {
-        int[] n = { -1, -1, 1 };//{ 1, 2, 3, -3 , 1, 1 , 1, 4, 2, -3  };//{1};
-        int k = 0;
+        int[] n = { 1, 1, 1 };//{ 1, 2, 3, -3 , 1, 1 , 1, 4, 2, -3  };//{1};
+        int k = 2;
         int count = countSubarraySumEqualsK(n, k);
         System.out.println(count);
     }
 
-    private static int countSubarraySumEqualsK(int[] arr, int s) {
+    private static int countSubarraySumEqualsK(int[] nums, int k) {
 
-        if (arr.length == 0 ) return  0;
-        if (arr.length == 1 && arr[0] == s) {
+        if (nums.length == 0 ) return  0;
+        if (nums.length == 1 && nums[0] == k) {
             return 1;
         }
 
@@ -23,18 +23,15 @@ public class CountSubArraySumEqualsK {
         Map<Integer, Integer> prefixSumMap = new HashMap<>();
         prefixSumMap.put(0, 1);
 
-        for (int i = 0; i < arr.length; i++) {
-            prefixSum += arr[i];
-            if (!prefixSumMap.containsKey(prefixSum)) {
-                prefixSumMap.putIfAbsent(prefixSum, 1);
-            } else {
-                prefixSumMap.computeIfPresent(prefixSum, (key, oldSum) -> oldSum+1 );
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum += nums[i];
+            int remove = (prefixSum - k);
+            if (prefixSumMap.containsKey(remove)) {
+                count += prefixSumMap.get(remove);
             }
-            int toRemove = (prefixSum - s);
-            if (s == 0) toRemove = 0-toRemove;
-
-            count = count + prefixSumMap.getOrDefault(toRemove, 0);
+            prefixSumMap.put(prefixSum, prefixSumMap.getOrDefault(prefixSum, 0) +1);
         }
+
         return count;
     }
 }

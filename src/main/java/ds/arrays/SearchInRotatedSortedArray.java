@@ -10,44 +10,42 @@ import ds.utils.ArrayUtils;
  */
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
-        int[] arr = ArrayUtils.generateSequencialArray(15);
-        int searchIndex = search(arr, 14);
+        int[] arr = {4,5,6,7,0,1,2,3};
+        int searchIndex = search(arr, 6);
         ArrayUtils.print(arr);
         System.out.println();
         System.out.println(searchIndex == -1 ? -1 : searchIndex+1);
     }
 
-    private static int search(int[] arr, int searchElem) {
+    private static int search(int[] a, int k) {
 
-        int start = 0;
-        int end = arr.length - 1;
+        int low = 0, high = a.length - 1;
 
-        while (start <= end) {
-
-            int mid = (start + end) / 2;
-            if (arr[mid] == searchElem) {
+        while (low <= high) {
+            int mid = (low + high)/2;
+            if (a[mid] == k) {
                 return mid;
             }
-
-            // check which half is sorted if start item is less than less that the middle item
-            if (arr[start] <= arr[mid]) {
-                // left half is sorted
-                if (searchElem >= arr[start] && searchElem <= arr[mid]) {
-                    end = mid - 1;
+            // find which half is sorted
+            if (a[low] <= a[mid]) {
+                //if the number is within low to mid range
+                if (k >= a[low] && k <= a[mid]) {
+                    high = mid - 1;
                 } else {
-                    start = mid + 1;
+                    low = mid + 1;
                 }
 
-            // right half is sorted
-            } else if (arr[mid] < arr[end]){
-                if (searchElem >= arr[mid] && searchElem <= arr[end]) {
-                    start = mid + 1;
+            } else if (a[mid] <= a[high]) {
+                if (k >= a[mid] && k <= a[high]) {
+                    low = mid + 1;
                 } else {
-                    end = mid - 1;
+                    high = mid - 1;
                 }
             }
         }
 
         return -1;
     }
+
+
 }

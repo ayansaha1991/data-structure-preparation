@@ -27,14 +27,16 @@ class RemoveDuplicates {
 
 	private static int removeDuplicates2(int[] nums) {
 
-		int c = 0;
+		int u = 0;
 
 		for (int i = 1; i < nums.length; i++) {
-			if (nums[i] != nums[i - 1]) {
-				nums[++c] = nums[i];
+			if (nums[i] != nums[u]) {
+				u++;
+				nums[u] = nums[i];
 			}
 		}
-		return c+1;
+
+		return u+1;
 	}
 
 	private static void printArray(int[] nums, int k) {

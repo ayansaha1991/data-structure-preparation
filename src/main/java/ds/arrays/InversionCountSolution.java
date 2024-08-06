@@ -55,7 +55,6 @@ public class InversionCountSolution {
 				invCount = invCount + (left.length-i);
 			}
 
-
 		}
 
 		for (int l = i; l < left.length; l++) {
